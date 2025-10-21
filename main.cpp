@@ -65,7 +65,7 @@ int main() {
     Persona *p2 = new Persona("Mateo", 25);
     cout << "P2: Nombre: " << p2->getNombre() << " Edad: " << p2->getEdad() << endl;
     
-    modificarEdadPuntero(p2, 28);
+    modificarEdadPuntero(p2, 30);
     cout << "P2: Nombre: " << p2->getNombre() << " Edad: " << p2->getEdad() << endl;
     
     delete p2;
