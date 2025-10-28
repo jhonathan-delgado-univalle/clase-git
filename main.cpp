@@ -1,75 +1,37 @@
 #include <iostream>
 #include <string>
-#include "Persona.h"
+#include "Student.h"
+#include "Professor.h"
+#include "Course.h"
 
 using namespace std;
 
 
-int alCuadrado(int n) {
-    n = n * n;
-    cout << "1. Dentro de Al Cuadrado: " << n << endl;
-    return n;
-}
-
-int alCuadradoReferencia(int &n) {
-    n = n * n;
-    cout << "2. Dentro de Al Cuadrado por Referencia: " << n << endl;
-    return n;
-}
-
-int alCuadradoPuntero(int *const n) {
-    *n = (*n) * (*n);
-    cout << "3. Posición Dentro de Al Cuadrado por Puntero: " << n << endl;
-    cout << "3. Dentro de Al Cuadrado por Puntero: " << *n << endl;
-    return (*n);
-}
-
-void modificarEdad(Persona p, int nuevaEdad) {
-    p.setEdad(nuevaEdad);
-}
-
-void modificarEdadPuntero(Persona *p, int nuevaEdad) {
-    p->setEdad(nuevaEdad);
-}
-
-
 int main() {
 
-    int numero = 3;
-
-    cout << "Valor inicial: " << numero << endl;
-
-    cout << "PASO POR VALOR" << endl;
-    numero = alCuadrado(numero);
-    cout << "Valor final: " << numero << endl;
-
-    cout << "PASO POR REFERENCIA" << endl;
-    alCuadradoReferencia(numero);
-    cout << "Valor final: " << numero << endl;
+    Student student = Student(1, "Juan Perez", 20, "Street 1");
+    cout << "Student name: " << student.getFullName() << endl;
     
-    cout << "PASO POR PUNTERO" << endl;
-    cout << "Posicion: " << &numero << endl;
-    alCuadradoPuntero(&numero);
-    cout << "Valor final: " << numero << endl;
+    Professor professor = Professor(1, "Mariano Jimenez", 40, "Street 2");
+    cout << "Professor name: " << professor.getFullName() << endl;
+    cout << "Professor age: " << professor.getAge() << endl;
+    
+    Course course = Course(1, "Chemestry", 30, true, &professor);
+    cout << "Course name: " << course.getName() << endl;
+    
+    professor.setAge(41);
+    Professor* p1 = course.getProfessor();
+    cout << "Professor name: " << p1->getFullName() << endl;
+    cout << "Professor age: " << p1->getAge() << endl;
+    cout << "Professor age: " << professor.getAge() << endl;
     
     
-    cout << "#################################" << endl;
-    Persona p1("Juan", 15);
-    cout << "Inicial P1: Nombre: " << p1.getNombre() << " Edad: " << p1.getEdad() << endl;
-    modificarEdad(p1, 16);
-    cout << "Paso por valor - P1: Nombre: " << p1.getNombre() << " Edad: " << p1.getEdad() << endl;
+    Professor* professor2 = new Professor(2, "Julian Garcia", 35, "Street 3");
+    course.setProfessor(professor2);
+    Professor* p2 = course.getProfessor();
+    cout << "New Professor name: " << p2->getFullName() << endl;
+    cout << "New Professor age: " << p2->getAge() << endl;
     
-    modificarEdadPuntero(&p1, 16);
-    cout << "Paso por puntero - P1: Nombre: " << p1.getNombre() << " Edad: " << p1.getEdad() << endl;
     
-    Persona *p2 = new Persona("Mateo", 25);
-    cout << "P2: Nombre: " << p2->getNombre() << " Edad: " << p2->getEdad() << endl;
-    
-    modificarEdadPuntero(p2, 30);
-    cout << "P2: Nombre: " << p2->getNombre() << " Edad: " << p2->getEdad() << endl;
-    
-    delete p2;
-
-
     return 0;
 }
