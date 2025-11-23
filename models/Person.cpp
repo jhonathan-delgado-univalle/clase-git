@@ -43,3 +43,12 @@ void Person::setAddress(string a) {
 string Person::getAddress() {
     return this->address;
 }
+
+void Person::showInfo() {
+    cout << "--- " << this->id << "--- " << endl;
+    cout << "fullName: " << this->fullName << endl;
+    cout << "age: " << this->age << endl;
+    cout << "address: " << this->address << endl;
+    cout << "---------" << endl;
+    
+}

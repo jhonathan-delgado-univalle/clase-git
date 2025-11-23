@@ -23,6 +23,7 @@ public:
     int getAge();
     void setId(int i);
     int getId();
+    void showInfo();
 
 };
 

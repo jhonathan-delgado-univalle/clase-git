@@ -9,6 +9,7 @@ using namespace std;
 class Student: public Person {
 public:
     Student(int id, string fullName, int age, string address);
+    ~Student();
     bool isEnrolled();
 
 };
